@@ -11,37 +11,54 @@ maxhp=25
 hp=25
 gp=0
 userinput=""
-inventory=["test","test","test2"]
+inventory=["HP Potion (Small)","HP Potion (Small)","HP Potion (Small)"]
 
 def drawStats():
 	print("HP: " + str(hp) + "/" + str(maxhp))
 	print("GP: " + str(gp))
 
-def draw(loc):
+def draw():
+	global location
 	system('cls')
 	#Main Menu
-	if(loc==0):
+	if(location==0):
 		print("Python Adventure!")
 		print("Written by Talkashie")
-		print("\n\n\nPLAY\nEXIT")
+		print("\n\n\nCOMMANDS: PLAY, EXIT")
 
 	#Cabin
-	if(loc==1):
-		print("Location: Your cabin\n\n\n\n\n")
+	if(location==1):
+		print("Location: Your cabin")
 		drawStats()
-		print(*inventory)
-		print("\n\n\nPLAY")
+		print("\n\n\nCOMMANDS: Inventory")
+
+
+def drawInventory():
+	system('cls')
+	print("INVENTORY:\n")
+	#print(*inventory)
+	for i in range(len(inventory)):
+		print(str(i) + ": " + inventory[i])
+	system('pause')
 
 def userInput():
 	#Here we process user input depending upon the location
-	myInput=input("")
+	myInput=input("\nCOMMAND: ")
 	myInput=myInput.lower()
+	global location
+
 	#Main Menu
 	if(location==0):
-		exit=1
+		if(myInput=="exit"):
+			exit=1
+		elif(myInput=="play"):
+			location=1
+
+	#Cabin
+	if(location==1):
+		if(myInput=="inventory"):
+			drawInventory()
 
 while(exit==0):
-	draw(location)
+	draw()
 	userInput()
-	if(userinput=="exit"):
-		exit=1
