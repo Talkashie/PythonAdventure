@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['PythonAdventure.py'],
-             pathex=['C:\\Users\\Talkashie\\Documents\\GitHub\\PythonAdventure\\PythonAdventure\\PythonAdventure'],
+             pathex=['c:\\Users\\Talkashie\\Documents\\GitHub\\PythonAdventure\\PythonAdventure\\PythonAdventure'],
              binaries=[],
              datas=[],
              hiddenimports=[],
